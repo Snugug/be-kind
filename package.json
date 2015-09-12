@@ -1,7 +1,7 @@
 {
-  "name": "Babel-Fish",
+  "name": "Be-Kind",
   "version": "0.0.1",
-  "description": "Small, yellow, leech-like, and probably the oddest thing in the universe. Speech you put in comes out as translated text",
+  "description": "Don't be an ass when commenting on GitHub",
   "scripts": {
     "start": "node app.js"
   },
