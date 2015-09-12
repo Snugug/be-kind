@@ -1,0 +1,24 @@
+machine:
+  node:
+    version: 0.12.0
+
+dependencies:
+  pre:
+    - curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&source=github'
+    - sudo dpkg -i cf-cli_amd64.deb
+    - cf -v
+  post:
+    - bower install
+
+test:
+  post:
+    - cf api https://api.ng.bluemix.net
+    - cf auth $BLUEMIX_USER $BLUEMIX_PASSWORD
+    - cf target -o $BLUEMIX_USER -s "JSConf - Be Kind"
+    - cf a
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - cf push
