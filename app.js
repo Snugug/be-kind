@@ -14,7 +14,7 @@ if (process.env.VCAP_SERVICES) {
 
 app.use(express.static(__dirname + '/public'));
 
-app.post('/analyze', function (req, res) {
+app.get('/analyze', function (req, res) {
   var analyzed = {};
   var toneAnalyzer = watson.tone_analyzer({
     'username': credentials.username,
@@ -23,7 +23,7 @@ app.post('/analyze', function (req, res) {
   });
 
   toneAnalyzer.tone({
-    'text': req.body.text
+    'text': req.query.text
   }, function (err, tone) {
     if (err) {
       res.send(JSON.stringify(err));

@@ -40,7 +40,7 @@ gulp.task('browser-sync', ['nodemon'], function () {
   var appEnv = cfenv.getAppEnv();
 
   browserSync.init({
-    'proxy': appEnv.url,
+    'proxy': appEnv.url
   });
 });
 
