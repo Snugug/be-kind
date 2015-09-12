@@ -14,20 +14,30 @@ if (process.env.VCAP_SERVICES) {
 
 app.use(express.static(__dirname + '/public'));
 
-app.get('/analyze', function (req, res) {
+app.post('/analyze', function (req, res) {
+  var analyzed = {};
   var toneAnalyzer = watson.tone_analyzer({
     'username': credentials.username,
-    'password': credentials.password
+    'password': credentials.password,
+    'version': 'v1'
   });
 
   toneAnalyzer.tone({
-    'text': "I've got a lovely bunch of coconuts. Here they are a standing in a row. Big ones, small ones, some as big as your head! Give 'em a twist, a flick of the wrist, that's what the showman said."
+    'text': req.body.text
   }, function (err, tone) {
     if (err) {
       res.send(JSON.stringify(err));
     }
     else {
-      res.send(JSON.stringify(tone));
+      tone = tone.children.filter(function (obj) {
+        return obj.id
+      });
+
+      tone[0].children.forEach(function (item) {
+        analyzed[item.id.toLowerCase()] = item.normalized_score;
+      });
+
+      res.send(JSON.stringify(analyzed));
     }
   });
 });
