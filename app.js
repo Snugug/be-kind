@@ -17,8 +17,7 @@ app.use(express.static(__dirname + '/public'));
 app.get('/analyze', function (req, res) {
   var toneAnalyzer = watson.tone_analyzer({
     'username': credentials.username,
-    'password': credentials.password,
-    'version': 'v2'
+    'password': credentials.password
   });
 
   toneAnalyzer.tone({
