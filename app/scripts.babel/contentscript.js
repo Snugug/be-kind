@@ -27,7 +27,7 @@ var debounce = function (func, wait, immediate) {
 var analyze = function (text, cb) {
   var http = new XMLHttpRequest();
 
-  http.open('GET', 'http://localhost:3000/analyze?text=' + encodeURIComponent(text));
+  http.open('GET', 'http://be-kind.mybluemix.net/analyze?text=' + encodeURIComponent(text));
 
   http.onreadystatechange = function () {
     cb(JSON.parse(http.responseText));
