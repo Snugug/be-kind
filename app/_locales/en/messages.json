@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Be Kind",
+    "description": "The name of the application"
+  },
+  "appDescription": {
+    "message": "Watson powered GitHub Comment tone analyzer",
+    "description": "The description of the application"
+  }
+}

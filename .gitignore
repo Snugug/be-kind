@@ -1,4 +1,11 @@
 node_modules
-bower_components
-tmp
-npm-debug.log
+temp
+.tmp
+dist
+.sass-cache
+app/bower_components
+test/bower_components
+package
+scripts/*.js
+scripts/*.map
+
